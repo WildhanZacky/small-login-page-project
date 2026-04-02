@@ -3,6 +3,10 @@
     --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'inter', sans-serif;
     background: var(--bg-gradient);
@@ -24,6 +28,7 @@ body {
 }
 
 .input-group {
+    width: 100%;
     text-align: left;
     margin-bottom: 1.2rem;
 }
@@ -59,6 +64,11 @@ button:hover {
 }
 button:active {
     transform: scale(0.98);
+}
+
+input, button {
+    width: 100%;
+    display: block;
 }
 
 .error-message {
