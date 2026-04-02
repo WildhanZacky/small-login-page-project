@@ -12,6 +12,10 @@ loginForm.addEventListener('submit', function(event) {
     }
     else if (userValue === "admin" && passValue === "1234") {
         showMessage("Login successful!", "green");
+
+        setTimeout(() => {
+            window.location.href = "index2.html";
+        }, 1500);
     }
     else {
         showMessage("Invalid username or password.", "red");
