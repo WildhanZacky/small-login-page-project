@@ -13,6 +13,34 @@ body {
     text-align: center;
 }
 
+.welcome-section {
+    text-align: center;
+    padding: 40px 20px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+}
+
+#greeting {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.clock-container {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #6366f1;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#date-display {
+    color: #888;
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
 .widget-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
