@@ -39,3 +39,52 @@ function updateClock() {
 setInterval(updateClock, 1000);
 
 updateClock();
+
+const input = document.getElementById('todoInput');
+const addBtn = document.getElementById('addBtn');
+const todoList = document.getElementById('todoList');
+
+function renderTodo(text) {
+    const li = document.createElement('li');
+    li.innerHTML = `
+    <span>${text}</span>
+    <button class="delete-btn">&times;</button>
+    `;
+
+    li.addEventListener('click', () => {
+        li.classList.toggle('completed');
+    });
+
+    li.querySelector('.delete-btn').addEventListener('click', (e) => {
+        e.stopPropagation();
+        li.remove();
+        saveData();
+    });
+
+    todoList.appendChild(li);
+}
+
+addBtn.addEventListener('click', () => {
+    if (input.value.trim() !== "") {
+        renderTodo(input.value);
+        saveData();
+        input.value = "";
+    }
+});
+
+function saveData() {
+    const tasks = [];
+    document.querySelectorAll('li span:first-child').forEach(span => {
+        tasks.push(span.innerText)
+    });
+    localStorage.setItem('myTodoList', JSON.stringify(tasks));
+}
+
+function loadData() {
+    const savedtasks = JSON.parse(localStorage.getItem('myTodoList'));
+    if (savedtasks) {
+        savedtasks.forEach(task => renderTodo(task));
+    }
+}
+
+loadData();
