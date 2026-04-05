@@ -9,10 +9,53 @@ function navigateTo(url) {
     }, 300);
 }
 
+function updateClock() {
+    const now = new Date();
+
+    let h = now.getHours();
+    let m = now.getMinutes();
+    let s = now.getSeconds();
+
+    h = h < 10 ? "0" + h : h;
+    m = m < 10 ? "0" + m : m;
+    s = s < 10 ? "0" + s : s;
+
+    document.getElementById('hours').textContent = h;
+    document.getElementById('minutes').textContent = m;
+    document.getElementById('seconds').textContent = s;
+
+    let message = "";
+    if (h >= 5 && h < 12) message = "Good Morning 🌅"
+    else if (h >= 12 && h < 15) message = "Good Afternoon ☀️"
+    else if (h >= 15 && h < 18) message = "Good Afternoon 🌇"
+    else message = "Good Evening 🌙"
+
+    document.getElementById('greeting').innerText = message;
+
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    document.getElementById('date-display').innerText = now.toLocaleDateString('id-ID', options);
+}
+
+setInterval(updateClock, 1000);
+
+updateClock();
+
 const gallery = [
+    {
+        image: "img/Ranka-lee.jpg",
+        theme: "#4FCB9B"
+    },
     {
         image: "img/Ai-Mie.jpg",
         theme: "#F2A08C"
+    },
+    {
+        image: "img/ellen.png",
+        theme: "#2B2E3A"
+    },
+    {
+        image: "img/Freyja-wion.jpg",
+        theme: "#F6A26B"
     }
 ];
 
@@ -25,6 +68,9 @@ function updateTheme() {
     if(preview) preview.style.backgroundImage = `url(${data.image})`;
 
     document.documentElement.style.setProperty('--theme-color', data.theme);
+    document.documentElement.style.setProperty('--theme-hover-bg', data.hoverBg);
+
+    currentIndex = (currentIndex + 1) % gallery.length;
 }
 
 function updateClock() {
@@ -47,6 +93,7 @@ function navigateTo(url) {
 }
 
 setInterval(updateClock, 1000);
+setInterval(updateTheme, 20000);
 updateClock();
 updateTheme();
 
