@@ -12,8 +12,16 @@ function navigateTo(url) {
 const gallery = [
     {
         image: "img/Ai-Mie.jpg",
-        theme: "#F2A08C"
-    }
+    },
+    {
+        image: "img/Ai_Mie_.jpg"
+    },
+    {
+        image: "img/ゞ🌺_Ai_Mie.jpg"
+    },
+    {
+        image: "img/𖧷.jpg"
+    },
 ];
 
 let currentIndex = 0;
@@ -24,7 +32,7 @@ function updateTheme() {
     const preview = document.getElementById('galleryPreview');
     if(preview) preview.style.backgroundImage = `url(${data.image})`;
 
-    document.documentElement.style.setProperty('--theme-color', data.theme);
+    currentIndex = (currentIndex + 1) % gallery.length;
 }
 
 function updateClock() {
@@ -47,6 +55,7 @@ function navigateTo(url) {
 }
 
 setInterval(updateClock, 1000);
+setInterval(updateTheme, 5000);
 updateClock();
 updateTheme();
 
