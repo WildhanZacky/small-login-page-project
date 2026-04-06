@@ -5,7 +5,7 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f0f2f5;
+    background: linear-gradient(135deg, #f0f2f5 0%, #ffe9e3 100%);
     margin: 0;
     display: flex;
     justify-content: center;
@@ -13,7 +13,7 @@ body {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    transition: background-image 0.8s ease-in-out;
+    transition: background-image 0.8s ease-in;
 }
 
 .main-container {
