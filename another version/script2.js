@@ -93,7 +93,7 @@ function navigateTo(url) {
 }
 
 setInterval(updateClock, 1000);
-setInterval(updateTheme, 20000);
+setInterval(updateTheme, 5000);
 updateClock();
 updateTheme();
 
