@@ -101,13 +101,17 @@ p {
     display: flex;
     gap: 10px;
     margin-bottom: 20px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 #todoInput {
     flex: 1;
+    min-width: 0;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 8px;
+    box-sizing: border-box;
 }
 
 #addBtn {
