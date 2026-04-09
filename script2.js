@@ -59,6 +59,49 @@ setInterval(updateTheme, 5000);
 updateClock();
 updateTheme();
 
+async function UpdateWeather() {
+    const weatherDisplay = document.getElementById('weatherDisplay');
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(async (position) => {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+
+            const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code`;
+
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+
+                const temp = data.current.temperature_2m;
+                const code = data.current.weather_code;
+
+                let icon = "✨";
+                if (code === 0) icon = "☀️";
+                else if (code >= 1 && code <= 3) icon = "🌤️";
+                else if (code >= 45 && code <= 48) icon = "🌫️";
+                else if (code >= 51 && code <= 67) icon = "🌧️";
+                else if (code >= 71 && code <= 77) icon = "❄️";
+                else if (code >= 80 && code <= 82) icon = "🌦️";
+                else if (code >= 95) icon = "⛈️";
+
+                weatherDisplay.innerHTML = `${icon} ${temp}°C`;
+            } catch (error) {
+                console.error("Error fetching weather data:", error);
+                weatherDisplay.innerText = "Unable to load weather.";
+            }
+        }, (error) => {
+            console.warn("Access to geolocation denied:");
+            weatherDisplay.innerText = "Location access denied.";
+        }
+    );
+    } else {
+        weatherDisplay.innerText = "Geolocation is not supported by this browser.";
+    }
+}
+UpdateWeather();
+
+
 const input = document.getElementById('todoInput');
 const addBtn = document.getElementById('addBtn');
 const todoList = document.getElementById('todoList');
