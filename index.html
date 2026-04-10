@@ -1,35 +1,61 @@
 <!DOCTYPE html>
-<htm lang="en">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+    <title>Main Page</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
-    <div class="login-container">
-        <div class="login-box">
-            <h1>Welcome Back!</h1>
-            <p>Please enter your credentials to log in.</p>
-            <form id="loginForm">
-                <div class="input-group">
-                    <label for="username">Username:</label>
-                    <input type="text" id="username" placeholder="..." autocomplete="off">
-                </div>
+    <div class="main-container">
+        <header>
+            <h1>Welcome Back</h1>
+            <p>Your Personal Dashboard</p>
+        </header>
 
-                <div class="input-group">
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" placeholder="...">
-                </div>
+        <div class="welcome-section">
+            <h1 id="greeting">Loading...</h1>
+            <div class="clock-container">
+                <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span>
+            </div>
+            <p id="date-display"></p>
+            <div id="weatherDisplay" style="font-size: 1.2rem; color: var(--theme-color); font-weight: 600; margin-top: 5px;">
+                Loading weather...
+            </div>
+        </div>
 
-                <div id="errorMessage" class="error-msg"></div>
+        <div class="widget-card gallery-widget">
+            <div class="gallery-preview" id="galleryPreview"></div>
+        </div>
 
-                <button type="submit" id="submitBtn">
-                    <span class="btn-text">Login</span>
-                    <div class="spinner" id="spinner"></div>
-                </button>
-            </form>
+        <div class="widget-grid">
+            <div class="widget-card" onclick="navigateTo('https://www.youtube.com/')">
+                <div class="icon">🎥</div>
+                <h3>Youtube</h3>
+                <p>Watch latest videos</p>
+            </div>
+
+            <div class="widget-card" onclick="navigateTo('https://instagram.com')">
+                <div class="icon">📸</div>
+                <h3>Instagram</h3>
+                <p>Check your feed</p>
+            </div>
+
+            <div class="widget-card" onclick="navigateTo('https://github.com')">
+                <div class="icon">💻</div>
+                <h3>Github</h3>
+                <p>View your projects</p>
+            </div>
+        </div>
+
+        <div class="todo-widget">
+            <h3>Task Notes</h3>
+            <div class="todo-input-group">
+                <input type="text" id="todoInput" placeholder="Add a new task...">
+                <button id="addBtn">Add</button>
+            </div>
+            <ul id="todoList">
+            </ul>
         </div>
     </div>
 
